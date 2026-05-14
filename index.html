@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Plan Immobilier</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir: #0f0f0f;
+    --blanc: #f8f6f1;
+    --or: #c9a84c;
+    --or-light: #e8d5a3;
+    --or-pale: #fdf8ee;
+    --vert: #2d6a4f;
+    --vert-light: #d8f3dc;
+    --rouge: #b5290f;
+    --rouge-light: #fde8e4;
+    --gris: #6b6b6b;
+    --gris-light: #f0ede6;
+    --border: #e2ddd4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--blanc);
+    color: var(--noir);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--noir);
+    color: var(--blanc);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--or);
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--or);
+    letter-spacing: 0.02em;
+  }
+
+  .logo span { color: var(--blanc); font-size: 0.85rem; font-family: 'DM Sans', sans-serif; display: block; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  nav { display: flex; gap: 4px; }
+  nav button {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #aaa;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  nav button:hover { color: var(--blanc); border-color: #444; }
+  nav button.active { background: var(--or); color: var(--noir); border-color: var(--or); }
+
+  /* ── LAYOUT ── */
+  main { max-width: 1200px; margin: 0 auto; padding: 40px 32px; }
+
+  section.tab { display: none; animation: fadeIn 0.3s ease; }
+  section.tab.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── PAGE TITLE ── */
+  .page-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--noir);
+    margin-bottom: 4px;
+  }
+  .page-subtitle { color: var(--gris); font-size: 0.9rem; margin-bottom: 36px; font-weight: 300; }
+
+  /* ── KPI CARDS ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .kpi {
+    background: var(--blanc);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .kpi:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .kpi::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--or);
+  }
+  .kpi.green::before { background: var(--vert); }
+  .kpi.red::before { background: var(--rouge); }
+
+  .kpi-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gris); font-weight: 500; margin-bottom: 8px; }
+  .kpi-value {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--noir);
+    line-height: 1;
+  }
+  .kpi-value.pos { color: var(--vert); }
+  .kpi-value.neg { color: var(--rouge); }
+  .kpi-sub { font-size: 0.75rem; color: var(--gris); margin-top: 6px; }
+
+  /* ── PANELS ── */
+  .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+  .panel-full { margin-bottom: 32px; }
+
+  .panel {
+    background: var(--blanc);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .panel-header {
+    background: var(--noir);
+    color: var(--blanc);
+    padding: 12px 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .panel-header .icon { color: var(--or); }
+
+  .panel-body { padding: 0; }
+
+  /* ── TABLES ── */
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  th {
+    background: var(--gris-light);
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gris);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  th.right, td.right { text-align: right; }
+  td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+  }
+  td.label-cell {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--noir);
+  }
+  tr:last-child td { border-bottom: none; }
+  tr.total td { background: var(--or-pale); font-weight: 600; border-top: 2px solid var(--or-light); }
+  tr:hover td { background: var(--gris-light); }
+  .pos { color: var(--vert); }
+  .neg { color: var(--rouge); }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .badge.non { background: var(--vert-light); color: var(--vert); }
+  .badge.oui { background: var(--rouge-light); color: var(--rouge); }
+
+  /* ── FORM INPUTS ── */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .form-row {
+    display: contents;
+  }
+
+  .form-row > label, .form-row > div {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+  }
+  .form-row > label {
+    font-size: 0.85rem;
+    color: var(--noir);
+    border-right: 1px solid var(--border);
+  }
+  .form-row > div { justify-content: flex-end; }
+
+  input[type=number], input[type=text], select {
+    background: #fffef9;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--noir);
+    text-align: right;
+    width: 140px;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--or); box-shadow: 0 0 0 3px rgba(201,168,76,0.15); }
+  select { text-align: left; width: 180px; }
+
+  /* ── SIMULATION TABLE ── */
+  .sim-wrapper { overflow-x: auto; }
+  .sim-table { min-width: 900px; }
+  .sim-table td, .sim-table th { padding: 8px 12px; }
+  .sim-table .year-col { font-weight: 600; color: var(--noir); text-align: center; background: var(--gris-light); width: 50px; }
+  .sim-table tr.section-row td {
+    background: var(--noir);
+    color: var(--or);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 12px;
+    font-weight: 600;
+  }
+
+  /* ── AMORTISSEMENT ── */
+  .amort-wrapper { overflow-x: auto; max-height: 600px; overflow-y: auto; }
+  .amort-table { min-width: 700px; }
+  .amort-table thead { position: sticky; top: 0; z-index: 10; }
+  .amort-table tr.year-sep td {
+    background: var(--or-pale);
+    font-weight: 700;
+    color: var(--or);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-top: 2px solid var(--or-light);
+  }
+
+  /* ── CHART ── */
+  .chart-container { padding: 24px; }
+  canvas { width: 100% !important; }
+
+  /* ── LOTS TABLE ── */
+  .lot-table th { min-width: 90px; }
+
+  /* ── RECALC BTN ── */
+  .btn-primary {
+    background: var(--noir);
+    color: var(--or);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 20px;
+  }
+  .btn-primary:hover { background: var(--or); color: var(--noir); }
+
+  .section-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gris);
+    font-weight: 600;
+    padding: 8px 16px;
+    background: var(--gris-light);
+    border-bottom: 1px solid var(--border);
+    display: block;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--gris-light); }
+  ::-webkit-scrollbar-thumb { background: var(--or-light); border-radius: 3px; }
+
+  /* ── FOOTER ── */
+  footer { text-align: center; padding: 32px; color: #aaa; font-size: 0.75rem; border-top: 1px solid var(--border); margin-top: 60px; }
+
+  @media (max-width: 768px) {
+    .header-inner { flex-direction: column; gap: 16px; }
+    main { padding: 24px 16px; }
+    .panels { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    nav { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      IMMO PRO™
+      <span>Simulateur de Rentabilité Locative</span>
+    </div>
+    <nav>
+      <button class="active" onclick="showTab('synthese')">Synthèse</button>
+      <button onclick="showTab('parametres')">Paramètres</button>
+      <button onclick="showTab('simulation')">Simulation 27 ans</button>
+      <button onclick="showTab('amortissement')">Amortissement</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB SYNTHÈSE                                           -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="tab active" id="tab-synthese">
+  <p class="page-title">Tableau de Bord</p>
+  <p class="page-subtitle" id="projet-header">Projet : Appart Cannes · SCI du Futur · BNP Paribas</p>
+
+  <div class="kpi-grid" id="kpi-grid"></div>
+
+  <div class="panels">
+    <div class="panel">
+      <div class="panel-header"><span class="icon">◈</span> Coût de l'opération</div>
+      <div class="panel-body">
+        <table id="table-cout"></table>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><span class="icon">◈</span> Lots / Unités</div>
+      <div class="panel-body">
+        <div style="overflow-x:auto">
+          <table id="table-lots" class="lot-table"></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-full">
+    <div class="panel-header"><span class="icon">◈</span> Résultat annuel — Cash-flow &amp; Rentabilité</div>
+    <div class="panel-body chart-container">
+      <canvas id="chartCashflow" height="260"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB PARAMÈTRES                                         -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="tab" id="tab-parametres">
+  <p class="page-title">Paramètres</p>
+  <p class="page-subtitle">Modifiez les hypothèses et recalculez.</p>
+
+  <div class="panels">
+    <div class="panel">
+      <div class="panel-header"><span class="icon">◈</span> Acquisition &amp; Financement</div>
+      <div class="panel-body">
+        <div class="form-grid" id="form-acquisition"></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><span class="icon">◈</span> Revenus &amp; Charges</div>
+      <div class="panel-body">
+        <div class="form-grid" id="form-revenus"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-full">
+    <div class="panel-header"><span class="icon">◈</span> Fiscalité &amp; Amortissements</div>
+    <div class="panel-body">
+      <div class="form-grid" id="form-fiscalite"></div>
+    </div>
+  </div>
+
+  <button class="btn-primary" onclick="recalcAll()">↻ Recalculer</button>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB SIMULATION                                         -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="tab" id="tab-simulation">
+  <p class="page-title">Simulation sur 27 ans</p>
+  <p class="page-subtitle">Résultats fiscal et trésorerie année par année.</p>
+
+  <div class="panel panel-full">
+    <div class="panel-header"><span class="icon">◈</span> Résultat de l'investissement</div>
+    <div class="panel-body sim-wrapper">
+      <table class="sim-table" id="table-simulation"></table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB AMORTISSEMENT                                      -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="tab" id="tab-amortissement">
+  <p class="page-title">Tableau d'amortissement</p>
+  <p class="page-subtitle">Échéancier mensuel détaillé du crédit.</p>
+
+  <div class="kpi-grid" id="kpi-amort"></div>
+
+  <div class="panel panel-full">
+    <div class="panel-header"><span class="icon">◈</span> Échéancier mensuel</div>
+    <div class="panel-body amort-wrapper">
+      <table class="amort-table" id="table-amort">
+        <thead>
+          <tr>
+            <th>Éch.</th>
+            <th>Date</th>
+            <th class="right">Capital restant dû</th>
+            <th class="right">Intérêts</th>
+            <th class="right">Capital remb.</th>
+            <th class="right">Assurance</th>
+            <th class="right">Échéance</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-amort"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>IMMO PRO™ · Simulateur local · Données calculées dans votre navigateur · Aucune donnée transmise</footer>
+
+<!-- Chart.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+<script>
+// ══════════════════════════════════════════════════════════
+// ÉTAT
+// ══════════════════════════════════════════════════════════
+let P = {
+  projet: "Appart Cannes",
+  proprietaire: "SCI du Futur",
+  partenaire: "BNP Paribas",
+  // Acquisition
+  prixAchat: 100000,
+  travaux: 20000,
+  ameublement: 10000,
+  fraisNotaire: 8000,
+  fraisBancaire: 2000,
+  fraisAgence: 0,
+  apport: 15000,
+  valeurMarche: 120000,
+  // Lot 1
+  surfaceLot1: 30,
+  prixLot1: 120000,
+  loyerLot1: 800,
+  chargesLot1: 220,
+  meubesLot1: 10000,
+  travauxLot1: 20000,
+  // Crédit
+  montantEmprunte: 125000,
+  tauxAnnuel: 1.61,
+  dureeMois: 240,
+  tauxAssurance: 0.003,
+  differéPartiel: 6,
+  differéTotal: 0,
+  // Revenus
+  loyerMensuel: 800,
+  chargesAnnexes: 220, // mensuel
+  taxeFonciere: 1500,
+  fraisGestion: 0,
+  // Fiscalité
+  regimeFiscal: "LMNP au réel",
+  tmi: 30,
+  prel_soc: 17.2,
+  amortBati: 30,
+  amortMeubles: 10,
+  amortTravaux: 8,
+  terrainPct: 15,
+};
+
+// ══════════════════════════════════════════════════════════
+// UTILITAIRES
+// ══════════════════════════════════════════════════════════
+const fmt = (v, decimals=0) => {
+  if (v === null || v === undefined || isNaN(v)) return '—';
+  return new Intl.NumberFormat('fr-FR', {
+    style: 'currency', currency: 'EUR',
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals
+  }).format(v);
+};
+const fmtPct = v => isNaN(v) ? '—' : v.toFixed(2) + ' %';
+const fmtN = v => isNaN(v) ? '—' : new Intl.NumberFormat('fr-FR').format(Math.round(v));
+const cls = v => v >= 0 ? 'pos' : 'neg';
+
+function showTab(id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ══════════════════════════════════════════════════════════
+// CALCULS CRÉDIT
+// ══════════════════════════════════════════════════════════
+function calcCredit() {
+  const capital = P.montantEmprunte;
+  const tauxMens = (P.tauxAnnuel / 100) / 12;
+  const n = P.dureeMois - P.differéPartiel;
+  const assurMens = capital * P.tauxAssurance / 12;
+
+  // Mensualité hors assurance (post différé)
+  const mens = tauxMens > 0
+    ? capital * tauxMens * Math.pow(1 + tauxMens, n) / (Math.pow(1 + tauxMens, n) - 1)
+    : capital / n;
+
+  // Générer tableau mensuel complet
+  const rows = [];
+  let solde = capital;
+  let date = new Date(2019, 4, 1); // mai 2019
+
+  for (let i = 1; i <= P.dureeMois; i++) {
+    const interet = solde * tauxMens;
+    let capitalRembourse, mensualite;
+    if (i <= P.differéPartiel) {
+      capitalRembourse = 0;
+      mensualite = interet + assurMens;
+    } else {
+      capitalRembourse = mens - interet;
+      mensualite = mens + assurMens;
+      solde = Math.max(0, solde - capitalRembourse);
+    }
+    rows.push({
+      ech: i,
+      date: new Date(date),
+      solde: i <= P.differéPartiel ? capital : solde + capitalRembourse,
+      interet, capitalRembourse, assurMens, mensualite
+    });
+    date.setMonth(date.getMonth() + 1);
+    if (i <= P.differéPartiel) solde = capital;
+  }
+
+  return { mens, assurMens, mensTotal: mens + assurMens, rows, tauxMens };
+}
+
+// ══════════════════════════════════════════════════════════
+// SIMULATION ANNUELLE
+// ══════════════════════════════════════════════════════════
+function calcSimulation(creditRows) {
+  const years = [];
+  const loyer = P.loyerMensuel * 12;
+  const chargesAnnexes = P.chargesAnnexes * 12;
+  const baseBati = P.prixAchat * (1 - P.terrainPct / 100);
+  const amortBati = baseBati / P.amortBati;
+  const amortMeubles = P.ameublement / P.amortMeubles;
+  const amortTravaux = P.travaux / P.amortTravaux;
+
+  // Agréger intérêts + remboursement par année depuis le tableau crédit
+  const byYear = {};
+  creditRows.forEach(r => {
+    const y = r.date.getFullYear() - 2019 + 1;
+    if (y < 1 || y > 27) return;
+    if (!byYear[y]) byYear[y] = { interets: 0, capital: 0, assur: 0, total: 0 };
+    byYear[y].interets += r.interet;
+    byYear[y].capital += r.capitalRembourse;
+    byYear[y].assur += r.assurMens;
+    byYear[y].total += r.mensualite;
+  });
+
+  let deficitReportable = 0;
+
+  for (let y = 1; y <= 27; y++) {
+    const yr = byYear[y] || { interets: 0, capital: 0, assur: 0, total: 0 };
+    const interetsAssur = yr.interets + yr.assur;
+    const annuites = yr.total;
+    const fraisNotaireAn = y === 1 ? P.fraisNotaire : 0;
+    const fraisAgenceAn = y === 1 ? P.fraisAgence : 0;
+
+    // Amortissements
+    const amBati = amortBati;
+    const amMob = y <= P.amortMeubles ? amortMeubles : 0;
+    const amTrav = y <= P.amortTravaux ? amortTravaux : 0;
+    const amTotal = amBati + amMob + amTrav;
+
+    // Résultat fiscal
+    let resultFiscal;
+    if (P.regimeFiscal === 'LMNP au réel') {
+      resultFiscal = loyer - interetsAssur - chargesAnnexes - amTotal - P.taxeFonciere - P.fraisGestion - fraisNotaireAn - fraisAgenceAn;
+    } else if (P.regimeFiscal === 'LMNP micro-BIC') {
+      resultFiscal = loyer * 0.50;
+    } else if (P.regimeFiscal === 'Location nue au réel') {
+      resultFiscal = loyer - interetsAssur - chargesAnnexes - P.taxeFonciere - fraisNotaireAn;
+    } else if (P.regimeFiscal === 'Micro-foncier') {
+      resultFiscal = loyer * 0.70;
+    } else {
+      resultFiscal = loyer - interetsAssur - chargesAnnexes - amTotal - P.taxeFonciere;
+    }
+
+    // Report déficit
+    const resultFiscalAmorti = resultFiscal + deficitReportable;
+    if (resultFiscal < 0) deficitReportable += resultFiscal;
+    else deficitReportable = Math.min(0, deficitReportable + resultFiscal);
+
+    // Impôt
+    let impot = 0;
+    const imposable = Math.max(0, resultFiscalAmorti);
+    if (P.regimeFiscal === 'SCI à l\'IS') {
+      impot = imposable <= 42500 ? imposable * 0.15 : 42500 * 0.15 + (imposable - 42500) * 0.25;
+    } else {
+      impot = imposable * (P.tmi + P.prel_soc) / 100;
+    }
+
+    // Trésorerie
+    const chargesTotal = annuites + chargesAnnexes + P.taxeFonciere + P.fraisGestion + fraisNotaireAn + fraisAgenceAn;
+    const cashflow = loyer - chargesTotal - impot;
+
+    years.push({
+      y, loyer, interetsAssur, chargesAnnexes, amBati, amMob, amTrav, amTotal,
+      taxeFonciere: P.taxeFonciere, fraisNotaireAn, fraisAgenceAn,
+      resultFiscal, deficitReportable, resultFiscalAmorti, impot,
+      annuites, chargesTotal, cashflow
+    });
+  }
+  return years;
+}
+
+// ══════════════════════════════════════════════════════════
+// RENDER
+// ══════════════════════════════════════════════════════════
+let chartInstance = null;
+
+function recalcAll() {
+  const credit = calcCredit();
+  const sim = calcSimulation(credit.rows);
+  renderKPI(credit, sim);
+  renderCout();
+  renderLots();
+  renderChart(sim);
+  renderSimulation(sim);
+  renderAmort(credit);
+  renderFormParams();
+}
+
+function renderKPI(credit, sim) {
+  const totalOp = P.prixAchat + P.travaux + P.ameublement + P.fraisNotaire + P.fraisBancaire + P.fraisAgence;
+  const loyerAnnuel = P.loyerMensuel * 12;
+  const rentBrute = loyerAnnuel / totalOp * 100;
+  const chargesAn = P.chargesAnnexes * 12 + P.taxeFonciere + P.fraisGestion;
+  const rentNette = (loyerAnnuel - chargesAn) / totalOp * 100;
+  const cashflow1 = sim[0]?.cashflow || 0;
+  const cashflowMens = cashflow1 / 12;
+  const plusvalue = P.valeurMarche - P.prixAchat;
+
+  document.getElementById('kpi-grid').innerHTML = `
+    <div class="kpi"><div class="kpi-label">Coût total</div><div class="kpi-value">${fmt(totalOp)}</div><div class="kpi-sub">Apport : ${fmt(P.apport)}</div></div>
+    <div class="kpi"><div class="kpi-label">Rentabilité brute</div><div class="kpi-value">${fmtPct(rentBrute)}</div><div class="kpi-sub">Loyer : ${fmt(loyerAnnuel)}/an</div></div>
+    <div class="kpi"><div class="kpi-label">Rentabilité nette</div><div class="kpi-value">${fmtPct(rentNette)}</div><div class="kpi-sub">Charges déduites</div></div>
+    <div class="kpi ${cashflowMens >= 0 ? 'green' : 'red'}"><div class="kpi-label">Cash-flow mensuel</div><div class="kpi-value ${cls(cashflowMens)}">${fmt(cashflowMens)}</div><div class="kpi-sub">Année 1</div></div>
+    <div class="kpi"><div class="kpi-label">Mensualité crédit</div><div class="kpi-value">${fmt(credit.mensTotal)}</div><div class="kpi-sub">dont assurance ${fmt(credit.assurMens)}</div></div>
+    <div class="kpi ${plusvalue >= 0 ? 'green' : 'red'}"><div class="kpi-label">Plus-value latente</div><div class="kpi-value ${cls(plusvalue)}">${fmt(plusvalue)}</div><div class="kpi-sub">Valeur marché ${fmt(P.valeurMarche)}</div></div>
+  `;
+}
+
+function renderCout() {
+  const totalOp = P.prixAchat + P.travaux + P.ameublement + P.fraisNotaire + P.fraisBancaire + P.fraisAgence;
+  const items = [
+    ["Prix d'achat", P.prixAchat],
+    ["Travaux", P.travaux],
+    ["Ameublement", P.ameublement],
+    ["Frais de notaire", P.fraisNotaire],
+    ["Frais bancaires", P.fraisBancaire],
+    ["Frais d'agence", P.fraisAgence],
+  ];
+  document.getElementById('table-cout').innerHTML = `
+    <thead><tr><th>Poste</th><th class="right">Montant</th></tr></thead>
+    <tbody>
+      ${items.map(([l,v]) => `<tr><td class="label-cell">${l}</td><td class="right">${fmt(v)}</td></tr>`).join('')}
+      <tr class="total"><td class="label-cell">TOTAL OPÉRATION</td><td class="right">${fmt(totalOp)}</td></tr>
+      <tr><td class="label-cell">dont apport</td><td class="right">${fmt(P.apport)}</td></tr>
+      <tr><td class="label-cell">dont emprunt</td><td class="right">${fmt(P.montantEmprunte)}</td></tr>
+    </tbody>
+  `;
+}
+
+function renderLots() {
+  document.getElementById('table-lots').innerHTML = `
+    <thead>
+      <tr>
+        <th>Lot</th>
+        <th class="right">m²</th>
+        <th class="right">Prix lot</th>
+        <th class="right">Loyer</th>
+        <th class="right">Renta brute</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Lot 1 – Local commercial</td>
+        <td class="right">${P.surfaceLot1} m²</td>
+        <td class="right">${fmt(P.prixLot1)}</td>
+        <td class="right">${fmt(P.loyerLot1)}/m</td>
+        <td class="right">${fmtPct(P.loyerLot1 * 12 / P.prixLot1 * 100)}</td>
+      </tr>
+      ${[2,3,4,5,6,7,8,9,10].map(i => `<tr><td class="label-cell" style="color:#aaa">Lot ${i}</td><td class="right" style="color:#ccc">—</td><td class="right" style="color:#ccc">—</td><td class="right" style="color:#ccc">—</td><td class="right" style="color:#ccc">—</td></tr>`).join('')}
+      <tr class="total">
+        <td class="label-cell">TOTAUX</td>
+        <td class="right">${P.surfaceLot1} m²</td>
+        <td class="right">${fmt(P.prixLot1)}</td>
+        <td class="right">${fmt(P.loyerLot1)}/m</td>
+        <td class="right">${fmtPct(P.loyerLot1 * 12 / P.prixLot1 * 100)}</td>
+      </tr>
+    </tbody>
+  `;
+}
+
+function renderChart(sim) {
+  const ctx = document.getElementById('chartCashflow').getContext('2d');
+  if (chartInstance) chartInstance.destroy();
+  chartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: sim.map(r => `A${r.y}`),
+      datasets: [
+        {
+          label: 'Cash-flow annuel (€)',
+          data: sim.map(r => Math.round(r.cashflow)),
+          backgroundColor: sim.map(r => r.cashflow >= 0 ? 'rgba(45,106,79,0.75)' : 'rgba(181,41,15,0.75)'),
+          borderRadius: 3,
+          yAxisID: 'y'
+        },
+        {
+          label: 'Loyer annuel (€)',
+          data: sim.map(r => r.loyer),
+          type: 'line',
+          borderColor: '#c9a84c',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          pointRadius: 0,
+          yAxisID: 'y'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'top', labels: { font: { family: 'DM Sans', size: 11 }, color: '#6b6b6b' }},
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.dataset.label}: ${new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(ctx.raw)}`
+          }
+        }
+      },
+      scales: {
+        y: {
+          grid: { color: '#f0ede6' },
+          ticks: { font: { family: 'DM Mono', size: 10 }, color: '#6b6b6b',
+            callback: v => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v)
+          }
+        },
+        x: { grid: { display: false }, ticks: { font: { family: 'DM Mono', size: 9 }, color: '#aaa' } }
+      }
+    }
+  });
+}
+
+function renderSimulation(sim) {
+  const cols = sim.map(r => r.y);
+  const mkRow = (label, fn, isTot=false, isSec=false) => {
+    if (isSec) return `<tr class="section-row"><td colspan="${cols.length+1}">${label}</td></tr>`;
+    const vals = sim.map(fn);
+    const rowCls = isTot ? ' class="total"' : '';
+    return `<tr${rowCls}>
+      <td class="label-cell" style="white-space:nowrap;min-width:220px">${label}</td>
+      ${vals.map(v => {
+        const n = typeof v === 'number';
+        const c = n && v < 0 ? ' class="neg"' : n && v > 0 ? ' class="pos"' : '';
+        return `<td class="right"${c}>${n ? fmt(v) : v}</td>`;
+      }).join('')}
+    </tr>`;
+  };
+
+  const yearHeader = `<tr><th>—</th>${cols.map(y=>`<th class="right" style="min-width:80px">An ${y}</th>`).join('')}</tr>`;
+
+  document.getElementById('table-simulation').innerHTML = `
+    <thead>${yearHeader}</thead>
+    <tbody>
+      ${mkRow('RÉSULTAT FISCAL', null, false, true)}
+      ${mkRow('+ Revenu locatif annuel', r => r.loyer)}
+      ${mkRow('− Intérêts & assurance', r => -r.interetsAssur)}
+      ${mkRow('− Charges annexes', r => -r.chargesAnnexes)}
+      ${mkRow('− Amort. bâti (30 ans)', r => -r.amBati)}
+      ${mkRow('− Amort. meubles', r => -r.amMob)}
+      ${mkRow('− Amort. travaux', r => -r.amTrav)}
+      ${mkRow('− Taxe foncière', r => -r.taxeFonciere)}
+      ${mkRow('− Frais de notaire', r => r.fraisNotaireAn > 0 ? -r.fraisNotaireAn : null)}
+      ${mkRow('Résultat fiscal', r => r.resultFiscal, true)}
+      ${mkRow('Déficit reportable cumulé', r => r.deficitReportable)}
+      ${mkRow('Résultat fiscal amorti', r => r.resultFiscalAmorti)}
+      ${mkRow('Impôt à payer', r => r.impot > 0 ? r.impot : '<span class="badge non">NON</span>')}
+      ${mkRow('TRÉSORERIE', null, false, true)}
+      ${mkRow('+ Revenu locatif annuel', r => r.loyer)}
+      ${mkRow('− Remboursement emprunt', r => -r.annuites)}
+      ${mkRow('− Charges annexes', r => -r.chargesAnnexes)}
+      ${mkRow('− Taxe foncière', r => -r.taxeFonciere)}
+      ${mkRow('Total charges annuelles', r => -r.chargesTotal, true)}
+      ${mkRow('CASH-FLOW ANNUEL', r => r.cashflow, true)}
+      ${mkRow('Cash-flow mensuel', r => r.cashflow / 12)}
+    </tbody>
+  `;
+}
+
+function renderAmort(credit) {
+  const totalInterets = credit.rows.reduce((s,r) => s + r.interet, 0);
+  const totalAssur = credit.rows.reduce((s,r) => s + r.assurMens, 0);
+  const totalEch = credit.rows.reduce((s,r) => s + r.mensualite, 0);
+  const derniere = credit.rows[credit.rows.length-1]?.date;
+
+  document.getElementById('kpi-amort').innerHTML = `
+    <div class="kpi"><div class="kpi-label">Capital emprunté</div><div class="kpi-value">${fmt(P.montantEmprunte)}</div></div>
+    <div class="kpi"><div class="kpi-label">Mensualité (post-différé)</div><div class="kpi-value">${fmt(credit.mensTotal)}</div><div class="kpi-sub">dont assurance ${fmt(credit.assurMens)}</div></div>
+    <div class="kpi"><div class="kpi-label">Total intérêts</div><div class="kpi-value neg">${fmt(totalInterets)}</div></div>
+    <div class="kpi"><div class="kpi-label">Coût total crédit</div><div class="kpi-value neg">${fmt(totalEch - P.montantEmprunte)}</div></div>
+    <div class="kpi"><div class="kpi-label">Durée</div><div class="kpi-value">${P.dureeMois} mois</div><div class="kpi-sub">Différé ${P.differéPartiel} mois</div></div>
+    <div class="kpi"><div class="kpi-label">Dernière échéance</div><div class="kpi-value" style="font-size:1.1rem">${derniere ? derniere.toLocaleDateString('fr-FR',{month:'short',year:'numeric'}) : '—'}</div></div>
+  `;
+
+  let prevYear = null;
+  const tbody = document.getElementById('tbody-amort');
+  tbody.innerHTML = '';
+
+  credit.rows.forEach(r => {
+    const yr = r.date.getFullYear();
+    if (yr !== prevYear) {
+      const tr = document.createElement('tr');
+      tr.className = 'year-sep';
+      tr.innerHTML = `<td colspan="7">── Année ${yr} ──</td>`;
+      tbody.appendChild(tr);
+      prevYear = yr;
+    }
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="text-align:center;color:#aaa;font-size:0.78rem">${r.ech}</td>
+      <td>${r.date.toLocaleDateString('fr-FR',{month:'short',year:'numeric'})}</td>
+      <td class="right">${fmt(r.solde)}</td>
+      <td class="right neg">${fmt(r.interet)}</td>
+      <td class="right pos">${fmt(r.capitalRembourse)}</td>
+      <td class="right" style="color:#aaa">${fmt(r.assurMens)}</td>
+      <td class="right" style="font-weight:600">${fmt(r.mensualite)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderFormParams() {
+  const mkField = (id, label, val, type='number', suffix='') => `
+    <div class="form-row">
+      <label for="${id}">${label}${suffix ? ` <em style="color:#aaa;font-size:0.8em">(${suffix})</em>` : ''}</label>
+      <div><input type="${type}" id="${id}" value="${val}" style="width:${type==='text'?'200px':'140px'}"></div>
+    </div>`;
+
+  document.getElementById('form-acquisition').innerHTML = `
+    <span class="section-label" style="grid-column:1/-1">Acquisition</span>
+    ${mkField('f-prixAchat',"Prix d'achat",P.prixAchat,'number','€')}
+    ${mkField('f-travaux','Travaux',P.travaux,'number','€')}
+    ${mkField('f-ameublement','Ameublement',P.ameublement,'number','€')}
+    ${mkField('f-fraisNotaire','Frais de notaire',P.fraisNotaire,'number','€')}
+    ${mkField('f-fraisBancaire','Frais bancaires',P.fraisBancaire,'number','€')}
+    ${mkField('f-fraisAgence',"Frais d'agence",P.fraisAgence,'number','€')}
+    ${mkField('f-apport','Apport personnel',P.apport,'number','€')}
+    ${mkField('f-valeurMarche','Valeur de marché',P.valeurMarche,'number','€')}
+    <span class="section-label" style="grid-column:1/-1">Crédit</span>
+    ${mkField('f-montantEmprunte','Montant emprunté',P.montantEmprunte,'number','€')}
+    ${mkField('f-tauxAnnuel','Taux annuel',P.tauxAnnuel,'number','%')}
+    ${mkField('f-dureeMois','Durée',P.dureeMois,'number','mois')}
+    ${mkField('f-tauxAssurance','Assurance emprunteur',P.tauxAssurance,'number','% décimal')}
+    ${mkField('f-differéPartiel','Différé partiel',P.differéPartiel,'number','mois')}
+  `;
+
+  document.getElementById('form-revenus').innerHTML = `
+    <span class="section-label" style="grid-column:1/-1">Revenus</span>
+    ${mkField('f-loyerMensuel','Loyer mensuel',P.loyerMensuel,'number','€')}
+    <span class="section-label" style="grid-column:1/-1">Charges</span>
+    ${mkField('f-chargesAnnexes','Charges annexes mensuelles',P.chargesAnnexes,'number','€/mois')}
+    ${mkField('f-taxeFonciere','Taxe foncière',P.taxeFonciere,'number','€/an')}
+    ${mkField('f-fraisGestion','Frais de gestion',P.fraisGestion,'number','€/an')}
+    <span class="section-label" style="grid-column:1/-1">Lot 1</span>
+    ${mkField('f-surfaceLot1','Surface',P.surfaceLot1,'number','m²')}
+    ${mkField('f-prixLot1','Prix du lot',P.prixLot1,'number','€')}
+    ${mkField('f-loyerLot1','Loyer mensuel lot 1',P.loyerLot1,'number','€')}
+  `;
+
+  const regimes = ['LMNP au réel','LMNP micro-BIC','Location nue au réel','Micro-foncier','SCI à l\'IS'];
+  document.getElementById('form-fiscalite').innerHTML = `
+    <div class="form-row">
+      <label>Régime fiscal</label>
+      <div><select id="f-regime">${regimes.map(r=>`<option ${r===P.regimeFiscal?'selected':''}>${r}</option>`).join('')}</select></div>
+    </div>
+    ${mkField('f-tmi','TMI (Taux marginal)',P.tmi,'number','%')}
+    ${mkField('f-prelSoc','Prélèvements sociaux',P.prel_soc,'number','%')}
+    ${mkField('f-terrainPct','Quote-part terrain',P.terrainPct,'number','%')}
+    ${mkField('f-amortBati','Amort. bâti',P.amortBati,'number','ans')}
+    ${mkField('f-amortMeubles','Amort. mobilier',P.amortMeubles,'number','ans')}
+    ${mkField('f-amortTravaux','Amort. travaux',P.amortTravaux,'number','ans')}
+  `;
+}
+
+function recalcAll() {
+  // Lire les inputs
+  const g = (id, def) => { const el = document.getElementById(id); return el ? (parseFloat(el.value)||def) : def; };
+  const gs = (id, def) => { const el = document.getElementById(id); return el ? (el.value||def) : def; };
+
+  P.prixAchat = g('f-prixAchat', P.prixAchat);
+  P.travaux = g('f-travaux', P.travaux);
+  P.ameublement = g('f-ameublement', P.ameublement);
+  P.fraisNotaire = g('f-fraisNotaire', P.fraisNotaire);
+  P.fraisBancaire = g('f-fraisBancaire', P.fraisBancaire);
+  P.fraisAgence = g('f-fraisAgence', P.fraisAgence);
+  P.apport = g('f-apport', P.apport);
+  P.valeurMarche = g('f-valeurMarche', P.valeurMarche);
+  P.montantEmprunte = g('f-montantEmprunte', P.montantEmprunte);
+  P.tauxAnnuel = g('f-tauxAnnuel', P.tauxAnnuel);
+  P.dureeMois = g('f-dureeMois', P.dureeMois);
+  P.tauxAssurance = g('f-tauxAssurance', P.tauxAssurance);
+  P.differéPartiel = g('f-differéPartiel', P.differéPartiel);
+  P.loyerMensuel = g('f-loyerMensuel', P.loyerMensuel);
+  P.chargesAnnexes = g('f-chargesAnnexes', P.chargesAnnexes);
+  P.taxeFonciere = g('f-taxeFonciere', P.taxeFonciere);
+  P.fraisGestion = g('f-fraisGestion', P.fraisGestion);
+  P.surfaceLot1 = g('f-surfaceLot1', P.surfaceLot1);
+  P.prixLot1 = g('f-prixLot1', P.prixLot1);
+  P.loyerLot1 = g('f-loyerLot1', P.loyerLot1);
+  P.regimeFiscal = gs('f-regime', P.regimeFiscal);
+  P.tmi = g('f-tmi', P.tmi);
+  P.prel_soc = g('f-prelSoc', P.prel_soc);
+  P.terrainPct = g('f-terrainPct', P.terrainPct);
+  P.amortBati = g('f-amortBati', P.amortBati);
+  P.amortMeubles = g('f-amortMeubles', P.amortMeubles);
+  P.amortTravaux = g('f-amortTravaux', P.amortTravaux);
+
+  const credit = calcCredit();
+  const sim = calcSimulation(credit.rows);
+  renderKPI(credit, sim);
+  renderCout();
+  renderLots();
+  renderChart(sim);
+  renderSimulation(sim);
+  renderAmort(credit);
+  renderFormParams();
+}
+
+// Init
+(function init() {
+  const credit = calcCredit();
+  const sim = calcSimulation(credit.rows);
+  renderKPI(credit, sim);
+  renderCout();
+  renderLots();
+  renderChart(sim);
+  renderSimulation(sim);
+  renderAmort(credit);
+  renderFormParams();
+})();
+</script>
+</body>
+</html>
