@@ -19,6 +19,8 @@
     --gris: #6b6b6b;
     --gris-light: #f0ede6;
     --border: #e2ddd4;
+    --bleu: #1a4a7a;
+    --bleu-light: #ddeeff;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,9 +44,9 @@
   }
 
   .header-inner {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 16px 32px;
+    padding: 14px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -56,19 +58,18 @@
     color: var(--or);
     letter-spacing: 0.02em;
   }
-
   .logo span { color: var(--blanc); font-size: 0.85rem; font-family: 'DM Sans', sans-serif; display: block; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; }
 
-  nav { display: flex; gap: 4px; }
+  nav { display: flex; gap: 4px; flex-wrap: wrap; }
   nav button {
     background: transparent;
     border: 1px solid transparent;
     color: #aaa;
-    padding: 8px 16px;
+    padding: 7px 14px;
     border-radius: 4px;
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -78,7 +79,7 @@
   nav button.active { background: var(--or); color: var(--noir); border-color: var(--or); }
 
   /* ── LAYOUT ── */
-  main { max-width: 1200px; margin: 0 auto; padding: 40px 32px; }
+  main { max-width: 1400px; margin: 0 auto; padding: 36px 32px; }
 
   section.tab { display: none; animation: fadeIn 0.3s ease; }
   section.tab.active { display: block; }
@@ -88,25 +89,25 @@
   /* ── PAGE TITLE ── */
   .page-title {
     font-family: 'DM Serif Display', serif;
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: var(--noir);
     margin-bottom: 4px;
   }
-  .page-subtitle { color: var(--gris); font-size: 0.9rem; margin-bottom: 36px; font-weight: 300; }
+  .page-subtitle { color: var(--gris); font-size: 0.88rem; margin-bottom: 32px; font-weight: 300; }
 
   /* ── KPI CARDS ── */
   .kpi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin-bottom: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 36px;
   }
 
   .kpi {
     background: var(--blanc);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 20px 24px;
+    padding: 18px 20px;
     position: relative;
     overflow: hidden;
     transition: box-shadow 0.2s;
@@ -121,22 +122,24 @@
   }
   .kpi.green::before { background: var(--vert); }
   .kpi.red::before { background: var(--rouge); }
+  .kpi.blue::before { background: var(--bleu); }
 
-  .kpi-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gris); font-weight: 500; margin-bottom: 8px; }
+  .kpi-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gris); font-weight: 500; margin-bottom: 7px; }
   .kpi-value {
     font-family: 'DM Mono', monospace;
-    font-size: 1.7rem;
+    font-size: 1.55rem;
     font-weight: 500;
     color: var(--noir);
     line-height: 1;
   }
   .kpi-value.pos { color: var(--vert); }
   .kpi-value.neg { color: var(--rouge); }
-  .kpi-sub { font-size: 0.75rem; color: var(--gris); margin-top: 6px; }
+  .kpi-sub { font-size: 0.72rem; color: var(--gris); margin-top: 5px; }
 
   /* ── PANELS ── */
-  .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
-  .panel-full { margin-bottom: 32px; }
+  .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 28px; }
+  .panels-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; margin-bottom: 28px; }
+  .panel-full { margin-bottom: 28px; }
 
   .panel {
     background: var(--blanc);
@@ -148,8 +151,8 @@
   .panel-header {
     background: var(--noir);
     color: var(--blanc);
-    padding: 12px 20px;
-    font-size: 0.75rem;
+    padding: 11px 18px;
+    font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 600;
@@ -158,6 +161,7 @@
     gap: 8px;
   }
   .panel-header .icon { color: var(--or); }
+  .panel-header.blue { background: var(--bleu); }
 
   .panel-body { padding: 0; }
 
@@ -165,9 +169,9 @@
   table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
   th {
     background: var(--gris-light);
-    padding: 10px 16px;
+    padding: 9px 14px;
     text-align: left;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--gris);
@@ -176,14 +180,14 @@
   }
   th.right, td.right { text-align: right; }
   td {
-    padding: 10px 16px;
+    padding: 9px 14px;
     border-bottom: 1px solid var(--border);
     font-family: 'DM Mono', monospace;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
   }
   td.label-cell {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     color: var(--noir);
   }
   tr:last-child td { border-bottom: none; }
@@ -195,12 +199,32 @@
     display: inline-block;
     padding: 2px 8px;
     border-radius: 100px;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 600;
     font-family: 'DM Sans', sans-serif;
   }
   .badge.non { background: var(--vert-light); color: var(--vert); }
   .badge.oui { background: var(--rouge-light); color: var(--rouge); }
+
+  /* ── DPE BADGE ── */
+  .dpe-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    font-family: 'DM Mono', monospace;
+    color: #fff;
+  }
+  .dpe-A { background: #009933; }
+  .dpe-B { background: #33cc33; color: #000; }
+  .dpe-C { background: #ccff00; color: #000; }
+  .dpe-D { background: #ffcc00; color: #000; }
+  .dpe-E { background: #ff9900; }
+  .dpe-F { background: #ff6600; }
+  .dpe-G { background: #cc0000; }
 
   /* ── FORM INPUTS ── */
   .form-grid {
@@ -214,46 +238,63 @@
   }
 
   .form-row > label, .form-row > div {
-    padding: 10px 16px;
+    padding: 9px 14px;
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
   }
   .form-row > label {
-    font-size: 0.85rem;
+    font-size: 0.83rem;
     color: var(--noir);
     border-right: 1px solid var(--border);
   }
   .form-row > div { justify-content: flex-end; }
 
-  input[type=number], input[type=text], select {
+  .form-row > label .sub-hint {
+    font-size: 0.7rem;
+    color: var(--gris);
+    margin-left: 4px;
+  }
+
+  input[type=number], input[type=text], input[type=date], select {
     background: #fffef9;
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 6px 10px;
+    padding: 5px 9px;
     font-family: 'DM Mono', monospace;
-    font-size: 0.85rem;
+    font-size: 0.83rem;
     color: var(--noir);
     text-align: right;
-    width: 140px;
+    width: 150px;
     transition: border-color 0.2s;
   }
+  input[type=text], input[type=date] { text-align: left; }
   input:focus, select:focus { outline: none; border-color: var(--or); box-shadow: 0 0 0 3px rgba(201,168,76,0.15); }
   select { text-align: left; width: 180px; }
 
   /* ── SIMULATION TABLE ── */
   .sim-wrapper { overflow-x: auto; }
-  .sim-table { min-width: 900px; }
-  .sim-table td, .sim-table th { padding: 8px 12px; }
+  .sim-table { min-width: 1200px; }
+  .sim-table td, .sim-table th { padding: 7px 10px; }
   .sim-table .year-col { font-weight: 600; color: var(--noir); text-align: center; background: var(--gris-light); width: 50px; }
   .sim-table tr.section-row td {
     background: var(--noir);
     color: var(--or);
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    padding: 6px 12px;
+    padding: 5px 10px;
+    font-weight: 600;
+  }
+  .sim-table tr.sub-section-row td {
+    background: #1e1e1e;
+    color: #888;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
     font-weight: 600;
   }
 
@@ -265,7 +306,7 @@
     background: var(--or-pale);
     font-weight: 700;
     color: var(--or);
-    font-size: 0.75rem;
+    font-size: 0.73rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     border-top: 2px solid var(--or-light);
@@ -276,9 +317,9 @@
   canvas { width: 100% !important; }
 
   /* ── LOTS TABLE ── */
-  .lot-table th { min-width: 90px; }
+  .lot-table th { min-width: 80px; }
 
-  /* ── RECALC BTN ── */
+  /* ── BTN ── */
   .btn-primary {
     background: var(--noir);
     color: var(--or);
@@ -297,15 +338,47 @@
   .btn-primary:hover { background: var(--or); color: var(--noir); }
 
   .section-label {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--gris);
     font-weight: 600;
-    padding: 8px 16px;
+    padding: 7px 14px;
     background: var(--gris-light);
     border-bottom: 1px solid var(--border);
     display: block;
+  }
+
+  /* ── PROJET BANNER ── */
+  .projet-banner {
+    background: var(--noir);
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin-bottom: 28px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid #333;
+  }
+  .projet-banner-item { display: flex; flex-direction: column; gap: 3px; }
+  .projet-banner-item .lbl { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: #666; }
+  .projet-banner-item .val { font-family: 'DM Mono', monospace; font-size: 0.9rem; color: var(--blanc); }
+  .projet-banner-item .val.or { color: var(--or); }
+  .projet-banner-item .val.big { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--or); }
+
+  /* ── INFO ALERT ── */
+  .info-bar {
+    background: #fffbef;
+    border: 1px solid var(--or-light);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    color: #7a6020;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
   }
 
   /* ── SCROLLBAR ── */
@@ -314,12 +387,12 @@
   ::-webkit-scrollbar-thumb { background: var(--or-light); border-radius: 3px; }
 
   /* ── FOOTER ── */
-  footer { text-align: center; padding: 32px; color: #aaa; font-size: 0.75rem; border-top: 1px solid var(--border); margin-top: 60px; }
+  footer { text-align: center; padding: 28px; color: #aaa; font-size: 0.72rem; border-top: 1px solid var(--border); margin-top: 50px; }
 
-  @media (max-width: 768px) {
-    .header-inner { flex-direction: column; gap: 16px; }
-    main { padding: 24px 16px; }
-    .panels { grid-template-columns: 1fr; }
+  @media (max-width: 900px) {
+    .header-inner { flex-direction: column; gap: 14px; }
+    main { padding: 20px 14px; }
+    .panels, .panels-3 { grid-template-columns: 1fr; }
     .form-grid { grid-template-columns: 1fr; }
     .kpi-grid { grid-template-columns: 1fr 1fr; }
     nav { flex-wrap: wrap; justify-content: center; }
@@ -335,10 +408,10 @@
       <span>Simulateur de Rentabilité Locative</span>
     </div>
     <nav>
-      <button class="active" onclick="showTab('synthese')">Synthèse</button>
-      <button onclick="showTab('parametres')">Paramètres</button>
-      <button onclick="showTab('simulation')">Simulation 27 ans</button>
-      <button onclick="showTab('amortissement')">Amortissement</button>
+      <button class="active" onclick="showTab('synthese',this)">Synthèse</button>
+      <button onclick="showTab('parametres',this)">Paramètres</button>
+      <button onclick="showTab('simulation',this)">Simulation 27 ans</button>
+      <button onclick="showTab('amortissement',this)">Amortissement</button>
     </nav>
   </div>
 </header>
@@ -349,8 +422,7 @@
 <!-- TAB SYNTHÈSE                                           -->
 <!-- ══════════════════════════════════════════════════════ -->
 <section class="tab active" id="tab-synthese">
-  <p class="page-title">Tableau de Bord</p>
-  <p class="page-subtitle" id="projet-header">Projet : Appart Cannes · SCI du Futur · BNP Paribas</p>
+  <div id="projet-banner" class="projet-banner"></div>
 
   <div class="kpi-grid" id="kpi-grid"></div>
 
@@ -371,10 +443,25 @@
     </div>
   </div>
 
+  <div class="panels">
+    <div class="panel">
+      <div class="panel-header"><span class="icon">◈</span> Charges annuelles détaillées</div>
+      <div class="panel-body">
+        <table id="table-charges"></table>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><span class="icon">◈</span> Indicateurs clés</div>
+      <div class="panel-body">
+        <table id="table-indicateurs"></table>
+      </div>
+    </div>
+  </div>
+
   <div class="panel panel-full">
-    <div class="panel-header"><span class="icon">◈</span> Résultat annuel — Cash-flow &amp; Rentabilité</div>
+    <div class="panel-header"><span class="icon">◈</span> Cash-flow annuel &amp; Loyer effectif</div>
     <div class="panel-body chart-container">
-      <canvas id="chartCashflow" height="260"></canvas>
+      <canvas id="chartCashflow" height="240"></canvas>
     </div>
   </div>
 </section>
@@ -384,8 +471,19 @@
 <!-- ══════════════════════════════════════════════════════ -->
 <section class="tab" id="tab-parametres">
   <p class="page-title">Paramètres</p>
-  <p class="page-subtitle">Modifiez les hypothèses et recalculez.</p>
+  <p class="page-subtitle">Renseignez tous les critères de votre investissement et recalculez.</p>
 
+  <div class="info-bar">⚠ Tous les champs sont pris en compte dans le calcul. Cliquez sur <strong style="margin:0 4px">↻ Recalculer</strong> après modification.</div>
+
+  <!-- Panel 1 : Identité -->
+  <div class="panel panel-full">
+    <div class="panel-header"><span class="icon">◈</span> Identité du Projet</div>
+    <div class="panel-body">
+      <div class="form-grid" id="form-identite"></div>
+    </div>
+  </div>
+
+  <!-- Panel 2 + 3 : Acquisition & Crédit -->
   <div class="panels">
     <div class="panel">
       <div class="panel-header"><span class="icon">◈</span> Acquisition &amp; Financement</div>
@@ -394,15 +492,27 @@
       </div>
     </div>
     <div class="panel">
-      <div class="panel-header"><span class="icon">◈</span> Revenus &amp; Charges</div>
+      <div class="panel-header"><span class="icon">◈</span> Crédit Immobilier</div>
       <div class="panel-body">
-        <div class="form-grid" id="form-revenus"></div>
+        <div class="form-grid" id="form-credit"></div>
       </div>
     </div>
   </div>
 
+  <!-- Panel 4 : Revenus & Charges -->
   <div class="panel panel-full">
-    <div class="panel-header"><span class="icon">◈</span> Fiscalité &amp; Amortissements</div>
+    <div class="panel-header"><span class="icon">◈</span> Revenus &amp; Charges</div>
+    <div class="panel-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-right:1px solid var(--border)">
+        <div class="form-grid" id="form-revenus" style="border-right:1px solid var(--border)"></div>
+        <div class="form-grid" id="form-charges"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 5 : Fiscalité -->
+  <div class="panel panel-full">
+    <div class="panel-header"><span class="icon">◈</span> Fiscalité, Amortissements &amp; Revalorisation</div>
     <div class="panel-body">
       <div class="form-grid" id="form-fiscalite"></div>
     </div>
@@ -416,7 +526,7 @@
 <!-- ══════════════════════════════════════════════════════ -->
 <section class="tab" id="tab-simulation">
   <p class="page-title">Simulation sur 27 ans</p>
-  <p class="page-subtitle">Résultats fiscal et trésorerie année par année.</p>
+  <p class="page-subtitle">Résultats fiscal et trésorerie année par année, avec revalorisation des loyers et des charges.</p>
 
   <div class="panel panel-full">
     <div class="panel-header"><span class="icon">◈</span> Résultat de l'investissement</div>
@@ -460,17 +570,25 @@
 
 <footer>IMMO PRO™ · Simulateur local · Données calculées dans votre navigateur · Aucune donnée transmise</footer>
 
-<!-- Chart.js CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 
 <script>
 // ══════════════════════════════════════════════════════════
-// ÉTAT
+// ÉTAT — tous les paramètres
 // ══════════════════════════════════════════════════════════
 let P = {
+  // Identité
   projet: "Appart Cannes",
+  dateAcquisition: "2024-01-15",
   proprietaire: "SCI du Futur",
   partenaire: "BNP Paribas",
+  typeGarantie: "Caution mutuelle",
+  typeBien: "Appartement",
+  adresse: "12 rue de la République",
+  ville: "Cannes",
+  dpe: "D",
+  anneeConstruction: 1975,
+
   // Acquisition
   prixAchat: 100000,
   travaux: 20000,
@@ -480,13 +598,8 @@ let P = {
   fraisAgence: 0,
   apport: 15000,
   valeurMarche: 120000,
-  // Lot 1
-  surfaceLot1: 30,
-  prixLot1: 120000,
-  loyerLot1: 800,
-  chargesLot1: 220,
-  meubesLot1: 10000,
-  travauxLot1: 20000,
+  revalorisationBien: 1.5,
+
   // Crédit
   montantEmprunte: 125000,
   tauxAnnuel: 1.61,
@@ -494,19 +607,52 @@ let P = {
   tauxAssurance: 0.003,
   differéPartiel: 6,
   differéTotal: 0,
+  typeTaux: "Fixe",
+  dateDebutCredit: "2024-02-01",
+  garantieCredit: "Caution",
+  tauxUsure: 0,
+
   // Revenus
+  typeLocation: "LMNP meublé",
   loyerMensuel: 800,
-  chargesAnnexes: 220, // mensuel
+  vacanceLocative: 5,
+  irlAnnuel: 2.5,
+  nbLots: 1,
+
+  // Lot 1
+  surfaceLot1: 30,
+  prixLot1: 120000,
+  loyerLot1: 800,
+  chargesLot1: 220,
+  meubesLot1: 10000,
+  travauxLot1: 20000,
+
+  // Charges
+  chargesAnnexes: 220,
   taxeFonciere: 1500,
   fraisGestion: 0,
+  assurancePNO: 200,
+  chargesCopro: 0,
+  fraisEntretien: 500,
+  fraisComptable: 0,
+  gliPct: 0,
+  cfe: 0,
+  electricitePC: 0,
+
+  // Revalorisation
+  hausseLoyers: 2.5,
+  hausseCharges: 2,
+
   // Fiscalité
   regimeFiscal: "LMNP au réel",
+  statutJuridique: "Particulier",
   tmi: 30,
   prel_soc: 17.2,
   amortBati: 30,
   amortMeubles: 10,
   amortTravaux: 8,
   terrainPct: 15,
+  dureeDetention: 20,
 };
 
 // ══════════════════════════════════════════════════════════
@@ -524,11 +670,11 @@ const fmtPct = v => isNaN(v) ? '—' : v.toFixed(2) + ' %';
 const fmtN = v => isNaN(v) ? '—' : new Intl.NumberFormat('fr-FR').format(Math.round(v));
 const cls = v => v >= 0 ? 'pos' : 'neg';
 
-function showTab(id) {
+function showTab(id, btn) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
-  event.currentTarget.classList.add('active');
+  if (btn) btn.classList.add('active');
 }
 
 // ══════════════════════════════════════════════════════════
@@ -537,23 +683,25 @@ function showTab(id) {
 function calcCredit() {
   const capital = P.montantEmprunte;
   const tauxMens = (P.tauxAnnuel / 100) / 12;
-  const n = P.dureeMois - P.differéPartiel;
+  const n = P.dureeMois - P.differéPartiel - P.differéTotal;
   const assurMens = capital * P.tauxAssurance / 12;
 
-  // Mensualité hors assurance (post différé)
   const mens = tauxMens > 0
     ? capital * tauxMens * Math.pow(1 + tauxMens, n) / (Math.pow(1 + tauxMens, n) - 1)
     : capital / n;
 
-  // Générer tableau mensuel complet
   const rows = [];
   let solde = capital;
-  let date = new Date(2019, 4, 1); // mai 2019
+  const startParts = P.dateDebutCredit.split('-');
+  let date = new Date(parseInt(startParts[0]), parseInt(startParts[1])-1, 1);
 
   for (let i = 1; i <= P.dureeMois; i++) {
     const interet = solde * tauxMens;
     let capitalRembourse, mensualite;
-    if (i <= P.differéPartiel) {
+    if (i <= P.differéTotal) {
+      capitalRembourse = 0;
+      mensualite = assurMens;
+    } else if (i <= P.differéTotal + P.differéPartiel) {
       capitalRembourse = 0;
       mensualite = interet + assurMens;
     } else {
@@ -564,11 +712,11 @@ function calcCredit() {
     rows.push({
       ech: i,
       date: new Date(date),
-      solde: i <= P.differéPartiel ? capital : solde + capitalRembourse,
+      solde: (i <= P.differéTotal + P.differéPartiel) ? capital : solde + capitalRembourse,
       interet, capitalRembourse, assurMens, mensualite
     });
     date.setMonth(date.getMonth() + 1);
-    if (i <= P.differéPartiel) solde = capital;
+    if (i <= P.differéTotal + P.differéPartiel) solde = capital;
   }
 
   return { mens, assurMens, mensTotal: mens + assurMens, rows, tauxMens };
@@ -579,17 +727,16 @@ function calcCredit() {
 // ══════════════════════════════════════════════════════════
 function calcSimulation(creditRows) {
   const years = [];
-  const loyer = P.loyerMensuel * 12;
-  const chargesAnnexes = P.chargesAnnexes * 12;
   const baseBati = P.prixAchat * (1 - P.terrainPct / 100);
-  const amortBati = baseBati / P.amortBati;
+  const amortBatiAn = baseBati / P.amortBati;
   const amortMeubles = P.ameublement / P.amortMeubles;
   const amortTravaux = P.travaux / P.amortTravaux;
 
-  // Agréger intérêts + remboursement par année depuis le tableau crédit
+  // Agréger par année depuis le tableau crédit
+  const startYear = parseInt(P.dateDebutCredit.split('-')[0]);
   const byYear = {};
   creditRows.forEach(r => {
-    const y = r.date.getFullYear() - 2019 + 1;
+    const y = r.date.getFullYear() - startYear + 1;
     if (y < 1 || y > 27) return;
     if (!byYear[y]) byYear[y] = { interets: 0, capital: 0, assur: 0, total: 0 };
     byYear[y].interets += r.interet;
@@ -604,52 +751,82 @@ function calcSimulation(creditRows) {
     const yr = byYear[y] || { interets: 0, capital: 0, assur: 0, total: 0 };
     const interetsAssur = yr.interets + yr.assur;
     const annuites = yr.total;
+
+    // Loyer avec vacance + IRL
+    const loyerBase = P.loyerMensuel * 12 * (1 - P.vacanceLocative / 100);
+    const loyer = loyerBase * Math.pow(1 + P.irlAnnuel / 100, y - 1);
+
+    // Charges avec revalorisation annuelle
+    const cg = Math.pow(1 + P.hausseCharges / 100, y - 1);
+    const chargesAnnexes = P.chargesAnnexes * 12 * cg;
+    const fraisGestion = P.fraisGestion * cg;
+    const assurancePNO = P.assurancePNO * cg;
+    const chargesCopro = P.chargesCopro * cg;
+    const fraisEntretien = P.fraisEntretien * cg;
+    const fraisComptable = P.fraisComptable * cg;
+    const gliAn = loyer * P.gliPct / 100;
+    const cfe = P.cfe * cg;
+    const electricitePC = P.electricitePC * cg;
+    const taxeFonciere = P.taxeFonciere * cg;
+
+    // Charges exceptionnelles an 1
     const fraisNotaireAn = y === 1 ? P.fraisNotaire : 0;
-    const fraisAgenceAn = y === 1 ? P.fraisAgence : 0;
+    const fraisAgenceAn  = y === 1 ? P.fraisAgence  : 0;
 
     // Amortissements
-    const amBati = amortBati;
-    const amMob = y <= P.amortMeubles ? amortMeubles : 0;
+    const amBati = amortBatiAn;
+    const amMob  = y <= P.amortMeubles ? amortMeubles : 0;
     const amTrav = y <= P.amortTravaux ? amortTravaux : 0;
     const amTotal = amBati + amMob + amTrav;
+
+    // Charges totales (hors annuités)
+    const chargesHorsEmprunt = chargesAnnexes + fraisGestion + assurancePNO + chargesCopro
+      + fraisEntretien + fraisComptable + gliAn + cfe + electricitePC
+      + taxeFonciere + fraisNotaireAn + fraisAgenceAn;
 
     // Résultat fiscal
     let resultFiscal;
     if (P.regimeFiscal === 'LMNP au réel') {
-      resultFiscal = loyer - interetsAssur - chargesAnnexes - amTotal - P.taxeFonciere - P.fraisGestion - fraisNotaireAn - fraisAgenceAn;
+      resultFiscal = loyer - interetsAssur - chargesHorsEmprunt - amTotal;
     } else if (P.regimeFiscal === 'LMNP micro-BIC') {
       resultFiscal = loyer * 0.50;
     } else if (P.regimeFiscal === 'Location nue au réel') {
-      resultFiscal = loyer - interetsAssur - chargesAnnexes - P.taxeFonciere - fraisNotaireAn;
+      resultFiscal = loyer - interetsAssur - chargesHorsEmprunt;
     } else if (P.regimeFiscal === 'Micro-foncier') {
       resultFiscal = loyer * 0.70;
+    } else if (P.regimeFiscal === "SCI à l'IS") {
+      resultFiscal = loyer - interetsAssur - chargesHorsEmprunt - amTotal;
     } else {
-      resultFiscal = loyer - interetsAssur - chargesAnnexes - amTotal - P.taxeFonciere;
+      resultFiscal = loyer - interetsAssur - chargesHorsEmprunt - amTotal;
     }
 
-    // Report déficit
+    const resultFiscalAvantReport = resultFiscal;
     const resultFiscalAmorti = resultFiscal + deficitReportable;
     if (resultFiscal < 0) deficitReportable += resultFiscal;
     else deficitReportable = Math.min(0, deficitReportable + resultFiscal);
 
-    // Impôt
     let impot = 0;
     const imposable = Math.max(0, resultFiscalAmorti);
-    if (P.regimeFiscal === 'SCI à l\'IS') {
+    if (P.regimeFiscal === "SCI à l'IS") {
       impot = imposable <= 42500 ? imposable * 0.15 : 42500 * 0.15 + (imposable - 42500) * 0.25;
     } else {
       impot = imposable * (P.tmi + P.prel_soc) / 100;
     }
 
     // Trésorerie
-    const chargesTotal = annuites + chargesAnnexes + P.taxeFonciere + P.fraisGestion + fraisNotaireAn + fraisAgenceAn;
-    const cashflow = loyer - chargesTotal - impot;
+    const cashflow = loyer - annuites - chargesHorsEmprunt - impot;
+
+    // Valeur estimée du bien
+    const valeurBien = P.valeurMarche * Math.pow(1 + P.revalorisationBien / 100, y);
 
     years.push({
-      y, loyer, interetsAssur, chargesAnnexes, amBati, amMob, amTrav, amTotal,
-      taxeFonciere: P.taxeFonciere, fraisNotaireAn, fraisAgenceAn,
-      resultFiscal, deficitReportable, resultFiscalAmorti, impot,
-      annuites, chargesTotal, cashflow
+      y, loyer, interetsAssur, annuites,
+      chargesAnnexes, fraisGestion, assurancePNO, chargesCopro,
+      fraisEntretien, fraisComptable, gliAn, cfe, electricitePC,
+      taxeFonciere, fraisNotaireAn, fraisAgenceAn, chargesHorsEmprunt,
+      amBati, amMob, amTrav, amTotal,
+      resultFiscal: resultFiscalAvantReport, deficitReportable, resultFiscalAmorti, impot,
+      cashflow, valeurBien
     });
   }
   return years;
@@ -661,34 +838,57 @@ function calcSimulation(creditRows) {
 let chartInstance = null;
 
 function recalcAll() {
+  _readParams();
   const credit = calcCredit();
   const sim = calcSimulation(credit.rows);
+  renderBanner();
   renderKPI(credit, sim);
   renderCout();
   renderLots();
+  renderChargesTable(sim);
+  renderIndicateurs(sim);
   renderChart(sim);
   renderSimulation(sim);
   renderAmort(credit);
   renderFormParams();
 }
 
+function renderBanner() {
+  const dpe = P.dpe || '?';
+  document.getElementById('projet-banner').innerHTML = `
+    <div class="projet-banner-item"><div class="lbl">Projet</div><div class="val big">${P.projet||'—'}</div></div>
+    <div class="projet-banner-item"><div class="lbl">Type de bien</div><div class="val or">${P.typeBien||'—'}</div></div>
+    <div class="projet-banner-item"><div class="lbl">Localisation</div><div class="val">${P.ville||'—'}</div></div>
+    <div class="projet-banner-item"><div class="lbl">DPE</div><div class="val"><span class="dpe-badge dpe-${dpe}">${dpe}</span></div></div>
+    <div class="projet-banner-item"><div class="lbl">Propriétaire</div><div class="val">${P.proprietaire||'—'}</div></div>
+    <div class="projet-banner-item"><div class="lbl">Partenaire</div><div class="val">${P.partenaire||'—'}</div></div>
+    <div class="projet-banner-item"><div class="lbl">Date acquisition</div><div class="val">${P.dateAcquisition||'—'}</div></div>
+    <div class="projet-banner-item"><div class="lbl">Régime fiscal</div><div class="val">${P.regimeFiscal||'—'}</div></div>
+    <div class="projet-banner-item"><div class="lbl">Garantie</div><div class="val">${P.typeGarantie||'—'}</div></div>
+    <div class="projet-banner-item"><div class="lbl">Type location</div><div class="val">${P.typeLocation||'—'}</div></div>
+  `;
+}
+
 function renderKPI(credit, sim) {
   const totalOp = P.prixAchat + P.travaux + P.ameublement + P.fraisNotaire + P.fraisBancaire + P.fraisAgence;
-  const loyerAnnuel = P.loyerMensuel * 12;
-  const rentBrute = loyerAnnuel / totalOp * 100;
-  const chargesAn = P.chargesAnnexes * 12 + P.taxeFonciere + P.fraisGestion;
-  const rentNette = (loyerAnnuel - chargesAn) / totalOp * 100;
+  const loyerEffectif = P.loyerMensuel * 12 * (1 - P.vacanceLocative / 100);
+  const rentBrute = loyerEffectif / totalOp * 100;
+  const chargesAn = P.chargesAnnexes * 12 + P.taxeFonciere + P.fraisGestion + P.assurancePNO + P.chargesCopro + P.fraisEntretien + P.fraisComptable + P.cfe + P.electricitePC + loyerEffectif * P.gliPct / 100;
+  const rentNette = (loyerEffectif - chargesAn) / totalOp * 100;
   const cashflow1 = sim[0]?.cashflow || 0;
   const cashflowMens = cashflow1 / 12;
   const plusvalue = P.valeurMarche - P.prixAchat;
+  const rentNetteNette = (loyerEffectif - chargesAn - (sim[0]?.impot || 0)) / totalOp * 100;
 
   document.getElementById('kpi-grid').innerHTML = `
     <div class="kpi"><div class="kpi-label">Coût total</div><div class="kpi-value">${fmt(totalOp)}</div><div class="kpi-sub">Apport : ${fmt(P.apport)}</div></div>
-    <div class="kpi"><div class="kpi-label">Rentabilité brute</div><div class="kpi-value">${fmtPct(rentBrute)}</div><div class="kpi-sub">Loyer : ${fmt(loyerAnnuel)}/an</div></div>
+    <div class="kpi"><div class="kpi-label">Rentabilité brute</div><div class="kpi-value">${fmtPct(rentBrute)}</div><div class="kpi-sub">Loyer effectif : ${fmt(loyerEffectif)}/an</div></div>
     <div class="kpi"><div class="kpi-label">Rentabilité nette</div><div class="kpi-value">${fmtPct(rentNette)}</div><div class="kpi-sub">Charges déduites</div></div>
+    <div class="kpi blue"><div class="kpi-label">Rentabilité nette nette</div><div class="kpi-value">${fmtPct(rentNetteNette)}</div><div class="kpi-sub">Après impôt an 1</div></div>
     <div class="kpi ${cashflowMens >= 0 ? 'green' : 'red'}"><div class="kpi-label">Cash-flow mensuel</div><div class="kpi-value ${cls(cashflowMens)}">${fmt(cashflowMens)}</div><div class="kpi-sub">Année 1</div></div>
     <div class="kpi"><div class="kpi-label">Mensualité crédit</div><div class="kpi-value">${fmt(credit.mensTotal)}</div><div class="kpi-sub">dont assurance ${fmt(credit.assurMens)}</div></div>
     <div class="kpi ${plusvalue >= 0 ? 'green' : 'red'}"><div class="kpi-label">Plus-value latente</div><div class="kpi-value ${cls(plusvalue)}">${fmt(plusvalue)}</div><div class="kpi-sub">Valeur marché ${fmt(P.valeurMarche)}</div></div>
+    <div class="kpi"><div class="kpi-label">Taux de vacance</div><div class="kpi-value">${fmtPct(P.vacanceLocative)}</div><div class="kpi-sub">${fmt(P.loyerMensuel * 12 * P.vacanceLocative / 100)}/an manqué</div></div>
   `;
 }
 
@@ -726,19 +926,80 @@ function renderLots() {
     </thead>
     <tbody>
       <tr>
-        <td class="label-cell">Lot 1 – Local commercial</td>
+        <td class="label-cell">Lot 1 – ${P.typeBien}</td>
         <td class="right">${P.surfaceLot1} m²</td>
         <td class="right">${fmt(P.prixLot1)}</td>
         <td class="right">${fmt(P.loyerLot1)}/m</td>
         <td class="right">${fmtPct(P.loyerLot1 * 12 / P.prixLot1 * 100)}</td>
       </tr>
-      ${[2,3,4,5,6,7,8,9,10].map(i => `<tr><td class="label-cell" style="color:#aaa">Lot ${i}</td><td class="right" style="color:#ccc">—</td><td class="right" style="color:#ccc">—</td><td class="right" style="color:#ccc">—</td><td class="right" style="color:#ccc">—</td></tr>`).join('')}
+      ${[2,3,4,5,6,7,8,9,10].map(i => i <= P.nbLots
+        ? `<tr><td class="label-cell" style="color:#888">Lot ${i}</td><td class="right" style="color:#bbb">—</td><td class="right" style="color:#bbb">—</td><td class="right" style="color:#bbb">—</td><td class="right" style="color:#bbb">—</td></tr>`
+        : `<tr><td class="label-cell" style="color:#ccc;font-style:italic">Lot ${i}</td><td class="right" style="color:#ddd">·</td><td class="right" style="color:#ddd">·</td><td class="right" style="color:#ddd">·</td><td class="right" style="color:#ddd">·</td></tr>`
+      ).join('')}
       <tr class="total">
         <td class="label-cell">TOTAUX</td>
         <td class="right">${P.surfaceLot1} m²</td>
         <td class="right">${fmt(P.prixLot1)}</td>
         <td class="right">${fmt(P.loyerLot1)}/m</td>
         <td class="right">${fmtPct(P.loyerLot1 * 12 / P.prixLot1 * 100)}</td>
+      </tr>
+    </tbody>
+  `;
+}
+
+function renderChargesTable(sim) {
+  const s = sim[0];
+  if (!s) return;
+  const items = [
+    ["Mensualités crédit (an 1)", s.annuites],
+    ["Charges annexes (copropriété, etc.)", s.chargesAnnexes],
+    ["Taxe foncière", s.taxeFonciere],
+    ["Assurance PNO", s.assurancePNO],
+    ["Charges copropriété", s.chargesCopro],
+    ["Entretien / réparations", s.fraisEntretien],
+    ["Frais de gestion locative", s.fraisGestion],
+    ["Frais de comptable", s.fraisComptable],
+    ["GLI (garantie loyers impayés)", s.gliAn],
+    ["CFE", s.cfe],
+    ["Électricité parties communes", s.electricitePC],
+    ["Frais de notaire (an 1)", s.fraisNotaireAn],
+    ["Frais d'agence (an 1)", s.fraisAgenceAn],
+  ].filter(([,v]) => v > 0);
+  const total = items.reduce((sum,[,v]) => sum+v, 0);
+  document.getElementById('table-charges').innerHTML = `
+    <thead><tr><th>Charge</th><th class="right">An 1</th></tr></thead>
+    <tbody>
+      ${items.map(([l,v]) => `<tr><td class="label-cell">${l}</td><td class="right">${fmt(v)}</td></tr>`).join('')}
+      <tr class="total"><td class="label-cell">TOTAL CHARGES AN 1</td><td class="right">${fmt(total)}</td></tr>
+    </tbody>
+  `;
+}
+
+function renderIndicateurs(sim) {
+  const s1 = sim[0], s5 = sim[4], s10 = sim[9];
+  document.getElementById('table-indicateurs').innerHTML = `
+    <thead><tr><th>Indicateur</th><th class="right">An 1</th><th class="right">An 5</th><th class="right">An 10</th></tr></thead>
+    <tbody>
+      <tr><td class="label-cell">Loyer effectif</td><td class="right">${fmt(s1?.loyer)}</td><td class="right">${fmt(s5?.loyer)}</td><td class="right">${fmt(s10?.loyer)}</td></tr>
+      <tr><td class="label-cell">Cash-flow annuel</td>
+        <td class="right ${cls(s1?.cashflow)}">${fmt(s1?.cashflow)}</td>
+        <td class="right ${cls(s5?.cashflow)}">${fmt(s5?.cashflow)}</td>
+        <td class="right ${cls(s10?.cashflow)}">${fmt(s10?.cashflow)}</td>
+      </tr>
+      <tr><td class="label-cell">Résultat fiscal</td>
+        <td class="right ${cls(s1?.resultFiscal)}">${fmt(s1?.resultFiscal)}</td>
+        <td class="right ${cls(s5?.resultFiscal)}">${fmt(s5?.resultFiscal)}</td>
+        <td class="right ${cls(s10?.resultFiscal)}">${fmt(s10?.resultFiscal)}</td>
+      </tr>
+      <tr><td class="label-cell">Impôt estimé</td>
+        <td class="right">${s1?.impot > 0 ? fmt(s1.impot) : '<span class="badge non">NON</span>'}</td>
+        <td class="right">${s5?.impot > 0 ? fmt(s5.impot) : '<span class="badge non">NON</span>'}</td>
+        <td class="right">${s10?.impot > 0 ? fmt(s10.impot) : '<span class="badge non">NON</span>'}</td>
+      </tr>
+      <tr><td class="label-cell">Valeur estimée bien</td>
+        <td class="right pos">${fmt(s1?.valeurBien)}</td>
+        <td class="right pos">${fmt(s5?.valeurBien)}</td>
+        <td class="right pos">${fmt(s10?.valeurBien)}</td>
       </tr>
     </tbody>
   `;
@@ -760,8 +1021,8 @@ function renderChart(sim) {
           yAxisID: 'y'
         },
         {
-          label: 'Loyer annuel (€)',
-          data: sim.map(r => r.loyer),
+          label: 'Loyer effectif (€)',
+          data: sim.map(r => Math.round(r.loyer)),
           type: 'line',
           borderColor: '#c9a84c',
           backgroundColor: 'transparent',
@@ -775,18 +1036,12 @@ function renderChart(sim) {
       responsive: true,
       plugins: {
         legend: { position: 'top', labels: { font: { family: 'DM Sans', size: 11 }, color: '#6b6b6b' }},
-        tooltip: {
-          callbacks: {
-            label: ctx => ` ${ctx.dataset.label}: ${new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(ctx.raw)}`
-          }
-        }
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(ctx.raw)}` } }
       },
       scales: {
         y: {
           grid: { color: '#f0ede6' },
-          ticks: { font: { family: 'DM Mono', size: 10 }, color: '#6b6b6b',
-            callback: v => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v)
-          }
+          ticks: { font: { family: 'DM Mono', size: 10 }, color: '#6b6b6b', callback: v => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v) }
         },
         x: { grid: { display: false }, ticks: { font: { family: 'DM Mono', size: 9 }, color: '#aaa' } }
       }
@@ -796,12 +1051,13 @@ function renderChart(sim) {
 
 function renderSimulation(sim) {
   const cols = sim.map(r => r.y);
-  const mkRow = (label, fn, isTot=false, isSec=false) => {
-    if (isSec) return `<tr class="section-row"><td colspan="${cols.length+1}">${label}</td></tr>`;
+  const mkRow = (label, fn, isTot=false, isSec=false, isSubSec=false) => {
+    if (isSec)    return `<tr class="section-row"><td colspan="${cols.length+1}">${label}</td></tr>`;
+    if (isSubSec) return `<tr class="sub-section-row"><td colspan="${cols.length+1}">${label}</td></tr>`;
     const vals = sim.map(fn);
     const rowCls = isTot ? ' class="total"' : '';
     return `<tr${rowCls}>
-      <td class="label-cell" style="white-space:nowrap;min-width:220px">${label}</td>
+      <td class="label-cell" style="white-space:nowrap;min-width:240px">${label}</td>
       ${vals.map(v => {
         const n = typeof v === 'number';
         const c = n && v < 0 ? ' class="neg"' : n && v > 0 ? ' class="pos"' : '';
@@ -810,32 +1066,50 @@ function renderSimulation(sim) {
     </tr>`;
   };
 
-  const yearHeader = `<tr><th>—</th>${cols.map(y=>`<th class="right" style="min-width:80px">An ${y}</th>`).join('')}</tr>`;
+  const yearHeader = `<tr><th style="min-width:240px">—</th>${cols.map(y=>`<th class="right" style="min-width:80px">An ${y}</th>`).join('')}</tr>`;
 
   document.getElementById('table-simulation').innerHTML = `
     <thead>${yearHeader}</thead>
     <tbody>
-      ${mkRow('RÉSULTAT FISCAL', null, false, true)}
-      ${mkRow('+ Revenu locatif annuel', r => r.loyer)}
-      ${mkRow('− Intérêts & assurance', r => -r.interetsAssur)}
+      ${mkRow('REVENUS', null, false, true)}
+      ${mkRow('+ Loyer brut annuel', r => P.loyerMensuel * 12)}
+      ${mkRow('− Vacance locative (${P.vacanceLocative}%)', r => -(P.loyerMensuel * 12 * P.vacanceLocative / 100))}
+      ${mkRow('= Loyer effectif (après vacance + IRL)', r => r.loyer, true)}
+
+      ${mkRow('CHARGES', null, false, true)}
+      ${mkRow('Mensualités emprunt (capital + int. + ass.)', r => -r.annuites)}
+      ${mkRow('dont Intérêts & assurance', r => -r.interetsAssur)}
       ${mkRow('− Charges annexes', r => -r.chargesAnnexes)}
+      ${mkRow('− Taxe foncière', r => -r.taxeFonciere)}
+      ${mkRow('− Assurance PNO', r => -r.assurancePNO)}
+      ${mkRow('− Charges copropriété', r => -r.chargesCopro)}
+      ${mkRow('− Entretien / réparations', r => -r.fraisEntretien)}
+      ${mkRow('− Frais de gestion', r => -r.fraisGestion)}
+      ${mkRow('− Frais de comptable', r => -r.fraisComptable)}
+      ${mkRow('− GLI (garantie loyers impayés)', r => -r.gliAn)}
+      ${mkRow('− CFE', r => -r.cfe)}
+      ${mkRow('− Électricité parties communes', r => -r.electricitePC)}
+      ${mkRow('− Frais de notaire (an 1)', r => r.fraisNotaireAn > 0 ? -r.fraisNotaireAn : null)}
+
+      ${mkRow('RÉSULTAT FISCAL', null, false, true)}
       ${mkRow('− Amort. bâti (30 ans)', r => -r.amBati)}
       ${mkRow('− Amort. meubles', r => -r.amMob)}
       ${mkRow('− Amort. travaux', r => -r.amTrav)}
-      ${mkRow('− Taxe foncière', r => -r.taxeFonciere)}
-      ${mkRow('− Frais de notaire', r => r.fraisNotaireAn > 0 ? -r.fraisNotaireAn : null)}
-      ${mkRow('Résultat fiscal', r => r.resultFiscal, true)}
+      ${mkRow('Résultat fiscal avant report', r => r.resultFiscal, true)}
       ${mkRow('Déficit reportable cumulé', r => r.deficitReportable)}
-      ${mkRow('Résultat fiscal amorti', r => r.resultFiscalAmorti)}
+      ${mkRow('Résultat fiscal net', r => r.resultFiscalAmorti, true)}
       ${mkRow('Impôt à payer', r => r.impot > 0 ? r.impot : '<span class="badge non">NON</span>')}
+
       ${mkRow('TRÉSORERIE', null, false, true)}
-      ${mkRow('+ Revenu locatif annuel', r => r.loyer)}
-      ${mkRow('− Remboursement emprunt', r => -r.annuites)}
-      ${mkRow('− Charges annexes', r => -r.chargesAnnexes)}
-      ${mkRow('− Taxe foncière', r => -r.taxeFonciere)}
-      ${mkRow('Total charges annuelles', r => -r.chargesTotal, true)}
+      ${mkRow('+ Loyer effectif', r => r.loyer)}
+      ${mkRow('− Mensualités emprunt totales', r => -r.annuites)}
+      ${mkRow('− Charges hors emprunt', r => -r.chargesHorsEmprunt)}
+      ${mkRow('− Impôt', r => -r.impot)}
       ${mkRow('CASH-FLOW ANNUEL', r => r.cashflow, true)}
       ${mkRow('Cash-flow mensuel', r => r.cashflow / 12)}
+
+      ${mkRow('PATRIMOINE', null, false, true)}
+      ${mkRow('Valeur estimée du bien', r => r.valeurBien)}
     </tbody>
   `;
 }
@@ -848,7 +1122,7 @@ function renderAmort(credit) {
 
   document.getElementById('kpi-amort').innerHTML = `
     <div class="kpi"><div class="kpi-label">Capital emprunté</div><div class="kpi-value">${fmt(P.montantEmprunte)}</div></div>
-    <div class="kpi"><div class="kpi-label">Mensualité (post-différé)</div><div class="kpi-value">${fmt(credit.mensTotal)}</div><div class="kpi-sub">dont assurance ${fmt(credit.assurMens)}</div></div>
+    <div class="kpi"><div class="kpi-label">Mensualité</div><div class="kpi-value">${fmt(credit.mensTotal)}</div><div class="kpi-sub">dont assurance ${fmt(credit.assurMens)}</div></div>
     <div class="kpi"><div class="kpi-label">Total intérêts</div><div class="kpi-value neg">${fmt(totalInterets)}</div></div>
     <div class="kpi"><div class="kpi-label">Coût total crédit</div><div class="kpi-value neg">${fmt(totalEch - P.montantEmprunte)}</div></div>
     <div class="kpi"><div class="kpi-label">Durée</div><div class="kpi-value">${P.dureeMois} mois</div><div class="kpi-sub">Différé ${P.differéPartiel} mois</div></div>
@@ -882,110 +1156,219 @@ function renderAmort(credit) {
   });
 }
 
+// ══════════════════════════════════════════════════════════
+// RENDER FORM PARAMS
+// ══════════════════════════════════════════════════════════
 function renderFormParams() {
-  const mkField = (id, label, val, type='number', suffix='') => `
+  const mkN = (id, label, val, suffix='', hint='') => `
     <div class="form-row">
-      <label for="${id}">${label}${suffix ? ` <em style="color:#aaa;font-size:0.8em">(${suffix})</em>` : ''}</label>
-      <div><input type="${type}" id="${id}" value="${val}" style="width:${type==='text'?'200px':'140px'}"></div>
+      <label for="${id}">${label}${suffix ? ` <em style="color:#bbb;font-size:0.75em">${suffix}</em>` : ''}${hint ? `<span class="sub-hint">${hint}</span>` : ''}</label>
+      <div><input type="number" id="${id}" value="${val}" step="any"></div>
     </div>`;
-
-  document.getElementById('form-acquisition').innerHTML = `
-    <span class="section-label" style="grid-column:1/-1">Acquisition</span>
-    ${mkField('f-prixAchat',"Prix d'achat",P.prixAchat,'number','€')}
-    ${mkField('f-travaux','Travaux',P.travaux,'number','€')}
-    ${mkField('f-ameublement','Ameublement',P.ameublement,'number','€')}
-    ${mkField('f-fraisNotaire','Frais de notaire',P.fraisNotaire,'number','€')}
-    ${mkField('f-fraisBancaire','Frais bancaires',P.fraisBancaire,'number','€')}
-    ${mkField('f-fraisAgence',"Frais d'agence",P.fraisAgence,'number','€')}
-    ${mkField('f-apport','Apport personnel',P.apport,'number','€')}
-    ${mkField('f-valeurMarche','Valeur de marché',P.valeurMarche,'number','€')}
-    <span class="section-label" style="grid-column:1/-1">Crédit</span>
-    ${mkField('f-montantEmprunte','Montant emprunté',P.montantEmprunte,'number','€')}
-    ${mkField('f-tauxAnnuel','Taux annuel',P.tauxAnnuel,'number','%')}
-    ${mkField('f-dureeMois','Durée',P.dureeMois,'number','mois')}
-    ${mkField('f-tauxAssurance','Assurance emprunteur',P.tauxAssurance,'number','% décimal')}
-    ${mkField('f-differéPartiel','Différé partiel',P.differéPartiel,'number','mois')}
-  `;
-
-  document.getElementById('form-revenus').innerHTML = `
-    <span class="section-label" style="grid-column:1/-1">Revenus</span>
-    ${mkField('f-loyerMensuel','Loyer mensuel',P.loyerMensuel,'number','€')}
-    <span class="section-label" style="grid-column:1/-1">Charges</span>
-    ${mkField('f-chargesAnnexes','Charges annexes mensuelles',P.chargesAnnexes,'number','€/mois')}
-    ${mkField('f-taxeFonciere','Taxe foncière',P.taxeFonciere,'number','€/an')}
-    ${mkField('f-fraisGestion','Frais de gestion',P.fraisGestion,'number','€/an')}
-    <span class="section-label" style="grid-column:1/-1">Lot 1</span>
-    ${mkField('f-surfaceLot1','Surface',P.surfaceLot1,'number','m²')}
-    ${mkField('f-prixLot1','Prix du lot',P.prixLot1,'number','€')}
-    ${mkField('f-loyerLot1','Loyer mensuel lot 1',P.loyerLot1,'number','€')}
-  `;
-
-  const regimes = ['LMNP au réel','LMNP micro-BIC','Location nue au réel','Micro-foncier','SCI à l\'IS'];
-  document.getElementById('form-fiscalite').innerHTML = `
+  const mkT = (id, label, val) => `
     <div class="form-row">
-      <label>Régime fiscal</label>
-      <div><select id="f-regime">${regimes.map(r=>`<option ${r===P.regimeFiscal?'selected':''}>${r}</option>`).join('')}</select></div>
-    </div>
-    ${mkField('f-tmi','TMI (Taux marginal)',P.tmi,'number','%')}
-    ${mkField('f-prelSoc','Prélèvements sociaux',P.prel_soc,'number','%')}
-    ${mkField('f-terrainPct','Quote-part terrain',P.terrainPct,'number','%')}
-    ${mkField('f-amortBati','Amort. bâti',P.amortBati,'number','ans')}
-    ${mkField('f-amortMeubles','Amort. mobilier',P.amortMeubles,'number','ans')}
-    ${mkField('f-amortTravaux','Amort. travaux',P.amortTravaux,'number','ans')}
+      <label for="${id}">${label}</label>
+      <div><input type="text" id="${id}" value="${val}" style="width:200px;text-align:left"></div>
+    </div>`;
+  const mkD = (id, label, val) => `
+    <div class="form-row">
+      <label for="${id}">${label}</label>
+      <div><input type="date" id="${id}" value="${val}" style="width:180px;text-align:left"></div>
+    </div>`;
+  const mkS = (id, label, val, opts) => `
+    <div class="form-row">
+      <label for="${id}">${label}</label>
+      <div><select id="${id}">${opts.map(o=>`<option ${o===val?'selected':''}>${o}</option>`).join('')}</select></div>
+    </div>`;
+  const mkSec = (label) => `<span class="section-label" style="grid-column:1/-1">${label}</span>`;
+
+  // ─ Identité
+  document.getElementById('form-identite').innerHTML = `
+    ${mkT('f-projet','Nom du projet',P.projet)}
+    ${mkD('f-dateAcquisition',"Date d'acquisition",P.dateAcquisition)}
+    ${mkT('f-proprietaire','Propriétaire / Structure',P.proprietaire)}
+    ${mkT('f-partenaire','Partenaire bancaire',P.partenaire)}
+    ${mkS('f-typeGarantie','Type de garantie',P.typeGarantie,['Caution mutuelle','Hypothèque','PPD','Nantissement','Autre'])}
+    ${mkS('f-typeBien','Type de bien',P.typeBien,['Appartement','Maison','Immeuble','Local commercial','Garage / Parking','VEFA','Terrain'])}
+    ${mkT('f-adresse','Adresse',P.adresse)}
+    ${mkT('f-ville','Ville / Code postal',P.ville)}
+    ${mkS('f-dpe','Classe DPE',P.dpe,['A','B','C','D','E','F','G'])}
+    ${mkN('f-anneeConstruction',"Année de construction",P.anneeConstruction,'')}
+  `;
+
+  // ─ Acquisition
+  document.getElementById('form-acquisition').innerHTML = `
+    ${mkSec('Prix & Coûts')}
+    ${mkN('f-prixAchat',"Prix d'achat net vendeur",P.prixAchat,'€')}
+    ${mkN('f-fraisAgence',"Frais d'agence",P.fraisAgence,'€')}
+    ${mkN('f-fraisNotaire','Frais de notaire',P.fraisNotaire,'€')}
+    ${mkN('f-fraisBancaire','Frais bancaires / dossier',P.fraisBancaire,'€')}
+    ${mkN('f-travaux','Travaux',P.travaux,'€')}
+    ${mkN('f-ameublement','Ameublement',P.ameublement,'€')}
+    ${mkSec('Financement')}
+    ${mkN('f-apport','Apport personnel',P.apport,'€')}
+    ${mkN('f-montantEmprunte','Montant emprunté',P.montantEmprunte,'€')}
+    ${mkSec('Valeur & Revalorisation')}
+    ${mkN('f-valeurMarche','Valeur de marché actuelle',P.valeurMarche,'€')}
+    ${mkN('f-revalorisationBien','Revalorisation annuelle bien',P.revalorisationBien,'%/an')}
+  `;
+
+  // ─ Crédit
+  document.getElementById('form-credit').innerHTML = `
+    ${mkSec('Conditions du prêt')}
+    ${mkN('f-tauxAnnuel','Taux nominal annuel',P.tauxAnnuel,'%')}
+    ${mkN('f-dureeMois','Durée totale',P.dureeMois,'mois')}
+    ${mkN('f-tauxAssurance','Taux assurance emprunteur',P.tauxAssurance,'% décimal','ex: 0.003')}
+    ${mkN('f-tauxUsure',"Taux d'usure (info)",P.tauxUsure,'%')}
+    ${mkSec('Différé')}
+    ${mkN('f-differéPartiel','Différé partiel',P.differéPartiel,'mois')}
+    ${mkN('f-differéTotal','Différé total',P.differéTotal,'mois')}
+    ${mkSec('Modalités')}
+    ${mkS('f-typeTaux','Type de taux',P.typeTaux,['Fixe','Variable','Mixte'])}
+    ${mkD('f-dateDebutCredit','Date début crédit',P.dateDebutCredit)}
+    ${mkS('f-garantieCredit','Garantie crédit',P.garantieCredit,['Caution','Hypothèque','PPD'])}
+  `;
+
+  // ─ Revenus (gauche)
+  document.getElementById('form-revenus').innerHTML = `
+    ${mkSec('Revenus locatifs')}
+    ${mkS('f-typeLocation','Type de location',P.typeLocation,['LMNP meublé','Location nue','Saisonnier','Colocation','Bail commercial'])}
+    ${mkN('f-loyerMensuel','Loyer mensuel brut',P.loyerMensuel,'€')}
+    ${mkN('f-nbLots','Nombre de lots',P.nbLots,'')}
+    ${mkN('f-vacanceLocative','Taux de vacance locative',P.vacanceLocative,'%','perte/an')}
+    ${mkN('f-irlAnnuel','Indexation loyer (IRL)',P.irlAnnuel,'%/an')}
+    ${mkSec('Lot 1')}
+    ${mkN('f-surfaceLot1','Surface lot 1',P.surfaceLot1,'m²')}
+    ${mkN('f-prixLot1','Prix du lot 1',P.prixLot1,'€')}
+    ${mkN('f-loyerLot1','Loyer mensuel lot 1',P.loyerLot1,'€')}
+  `;
+
+  // ─ Charges (droite)
+  document.getElementById('form-charges').innerHTML = `
+    ${mkSec('Charges courantes')}
+    ${mkN('f-chargesAnnexes','Charges annexes mensuelles',P.chargesAnnexes,'€/mois')}
+    ${mkN('f-taxeFonciere','Taxe foncière',P.taxeFonciere,'€/an')}
+    ${mkN('f-fraisGestion','Frais de gestion locative',P.fraisGestion,'€/an')}
+    ${mkN('f-chargesCopro','Charges de copropriété',P.chargesCopro,'€/an')}
+    ${mkSec('Assurances & Garanties')}
+    ${mkN('f-assurancePNO','Assurance PNO',P.assurancePNO,'€/an')}
+    ${mkN('f-gliPct','GLI (garantie loyers impayés)',P.gliPct,'% loyer')}
+    ${mkSec('Autres charges')}
+    ${mkN('f-fraisEntretien','Entretien / réparations',P.fraisEntretien,'€/an')}
+    ${mkN('f-fraisComptable','Honoraires comptable',P.fraisComptable,'€/an')}
+    ${mkN('f-cfe','CFE (cot. foncière entreprises)',P.cfe,'€/an')}
+    ${mkN('f-electricitePC','Électricité parties communes',P.electricitePC,'€/an')}
+    ${mkN('f-hausseCharges','Revalorisation charges/an',P.hausseCharges,'%/an')}
+  `;
+
+  // ─ Fiscalité
+  const regimes = ['LMNP au réel','LMNP micro-BIC','Location nue au réel','Micro-foncier',"SCI à l'IS"];
+  const statuts  = ['Particulier','SCI IR','SCI IS','SARL de famille','EURL'];
+  document.getElementById('form-fiscalite').innerHTML = `
+    ${mkSec('Régime & Statut')}
+    ${mkS('f-regime','Régime fiscal',P.regimeFiscal,regimes)}
+    ${mkS('f-statut','Statut juridique',P.statutJuridique,statuts)}
+    ${mkN('f-tmi','TMI (taux marginal)',P.tmi,'%')}
+    ${mkN('f-prelSoc','Prélèvements sociaux',P.prel_soc,'%')}
+    ${mkSec('Amortissements')}
+    ${mkN('f-terrainPct','Quote-part terrain (non amortissable)',P.terrainPct,'%')}
+    ${mkN('f-amortBati','Amortissement bâti',P.amortBati,'ans')}
+    ${mkN('f-amortMeubles','Amortissement mobilier',P.amortMeubles,'ans')}
+    ${mkN('f-amortTravaux','Amortissement travaux',P.amortTravaux,'ans')}
+    ${mkSec('Horizon')}
+    ${mkN('f-dureeDetention','Durée de détention prévue',P.dureeDetention,'ans')}
   `;
 }
 
-function recalcAll() {
-  // Lire les inputs
-  const g = (id, def) => { const el = document.getElementById(id); return el ? (parseFloat(el.value)||def) : def; };
+// ══════════════════════════════════════════════════════════
+// LIRE LES PARAMÈTRES
+// ══════════════════════════════════════════════════════════
+function _readParams() {
+  const g  = (id, def) => { const el = document.getElementById(id); return el ? (parseFloat(el.value)||def) : def; };
   const gs = (id, def) => { const el = document.getElementById(id); return el ? (el.value||def) : def; };
 
-  P.prixAchat = g('f-prixAchat', P.prixAchat);
-  P.travaux = g('f-travaux', P.travaux);
-  P.ameublement = g('f-ameublement', P.ameublement);
-  P.fraisNotaire = g('f-fraisNotaire', P.fraisNotaire);
-  P.fraisBancaire = g('f-fraisBancaire', P.fraisBancaire);
-  P.fraisAgence = g('f-fraisAgence', P.fraisAgence);
-  P.apport = g('f-apport', P.apport);
-  P.valeurMarche = g('f-valeurMarche', P.valeurMarche);
-  P.montantEmprunte = g('f-montantEmprunte', P.montantEmprunte);
-  P.tauxAnnuel = g('f-tauxAnnuel', P.tauxAnnuel);
-  P.dureeMois = g('f-dureeMois', P.dureeMois);
-  P.tauxAssurance = g('f-tauxAssurance', P.tauxAssurance);
-  P.differéPartiel = g('f-differéPartiel', P.differéPartiel);
-  P.loyerMensuel = g('f-loyerMensuel', P.loyerMensuel);
-  P.chargesAnnexes = g('f-chargesAnnexes', P.chargesAnnexes);
-  P.taxeFonciere = g('f-taxeFonciere', P.taxeFonciere);
-  P.fraisGestion = g('f-fraisGestion', P.fraisGestion);
-  P.surfaceLot1 = g('f-surfaceLot1', P.surfaceLot1);
-  P.prixLot1 = g('f-prixLot1', P.prixLot1);
-  P.loyerLot1 = g('f-loyerLot1', P.loyerLot1);
-  P.regimeFiscal = gs('f-regime', P.regimeFiscal);
-  P.tmi = g('f-tmi', P.tmi);
-  P.prel_soc = g('f-prelSoc', P.prel_soc);
-  P.terrainPct = g('f-terrainPct', P.terrainPct);
-  P.amortBati = g('f-amortBati', P.amortBati);
-  P.amortMeubles = g('f-amortMeubles', P.amortMeubles);
-  P.amortTravaux = g('f-amortTravaux', P.amortTravaux);
+  // Identité
+  P.projet          = gs('f-projet', P.projet);
+  P.dateAcquisition = gs('f-dateAcquisition', P.dateAcquisition);
+  P.proprietaire    = gs('f-proprietaire', P.proprietaire);
+  P.partenaire      = gs('f-partenaire', P.partenaire);
+  P.typeGarantie    = gs('f-typeGarantie', P.typeGarantie);
+  P.typeBien        = gs('f-typeBien', P.typeBien);
+  P.adresse         = gs('f-adresse', P.adresse);
+  P.ville           = gs('f-ville', P.ville);
+  P.dpe             = gs('f-dpe', P.dpe);
+  P.anneeConstruction = g('f-anneeConstruction', P.anneeConstruction);
 
-  const credit = calcCredit();
-  const sim = calcSimulation(credit.rows);
-  renderKPI(credit, sim);
-  renderCout();
-  renderLots();
-  renderChart(sim);
-  renderSimulation(sim);
-  renderAmort(credit);
-  renderFormParams();
+  // Acquisition
+  P.prixAchat       = g('f-prixAchat', P.prixAchat);
+  P.travaux         = g('f-travaux', P.travaux);
+  P.ameublement     = g('f-ameublement', P.ameublement);
+  P.fraisNotaire    = g('f-fraisNotaire', P.fraisNotaire);
+  P.fraisBancaire   = g('f-fraisBancaire', P.fraisBancaire);
+  P.fraisAgence     = g('f-fraisAgence', P.fraisAgence);
+  P.apport          = g('f-apport', P.apport);
+  P.valeurMarche    = g('f-valeurMarche', P.valeurMarche);
+  P.revalorisationBien = g('f-revalorisationBien', P.revalorisationBien);
+
+  // Crédit
+  P.montantEmprunte = g('f-montantEmprunte', P.montantEmprunte);
+  P.tauxAnnuel      = g('f-tauxAnnuel', P.tauxAnnuel);
+  P.dureeMois       = g('f-dureeMois', P.dureeMois);
+  P.tauxAssurance   = g('f-tauxAssurance', P.tauxAssurance);
+  P.differéPartiel  = g('f-differéPartiel', P.differéPartiel);
+  P.differéTotal    = g('f-differéTotal', P.differéTotal);
+  P.typeTaux        = gs('f-typeTaux', P.typeTaux);
+  P.dateDebutCredit = gs('f-dateDebutCredit', P.dateDebutCredit);
+  P.garantieCredit  = gs('f-garantieCredit', P.garantieCredit);
+  P.tauxUsure       = g('f-tauxUsure', P.tauxUsure);
+
+  // Revenus
+  P.typeLocation    = gs('f-typeLocation', P.typeLocation);
+  P.loyerMensuel    = g('f-loyerMensuel', P.loyerMensuel);
+  P.nbLots          = g('f-nbLots', P.nbLots);
+  P.vacanceLocative = g('f-vacanceLocative', P.vacanceLocative);
+  P.irlAnnuel       = g('f-irlAnnuel', P.irlAnnuel);
+  P.surfaceLot1     = g('f-surfaceLot1', P.surfaceLot1);
+  P.prixLot1        = g('f-prixLot1', P.prixLot1);
+  P.loyerLot1       = g('f-loyerLot1', P.loyerLot1);
+
+  // Charges
+  P.chargesAnnexes  = g('f-chargesAnnexes', P.chargesAnnexes);
+  P.taxeFonciere    = g('f-taxeFonciere', P.taxeFonciere);
+  P.fraisGestion    = g('f-fraisGestion', P.fraisGestion);
+  P.chargesCopro    = g('f-chargesCopro', P.chargesCopro);
+  P.assurancePNO    = g('f-assurancePNO', P.assurancePNO);
+  P.gliPct          = g('f-gliPct', P.gliPct);
+  P.fraisEntretien  = g('f-fraisEntretien', P.fraisEntretien);
+  P.fraisComptable  = g('f-fraisComptable', P.fraisComptable);
+  P.cfe             = g('f-cfe', P.cfe);
+  P.electricitePC   = g('f-electricitePC', P.electricitePC);
+  P.hausseCharges   = g('f-hausseCharges', P.hausseCharges);
+
+  // Fiscalité
+  P.regimeFiscal    = gs('f-regime', P.regimeFiscal);
+  P.statutJuridique = gs('f-statut', P.statutJuridique);
+  P.tmi             = g('f-tmi', P.tmi);
+  P.prel_soc        = g('f-prelSoc', P.prel_soc);
+  P.terrainPct      = g('f-terrainPct', P.terrainPct);
+  P.amortBati       = g('f-amortBati', P.amortBati);
+  P.amortMeubles    = g('f-amortMeubles', P.amortMeubles);
+  P.amortTravaux    = g('f-amortTravaux', P.amortTravaux);
+  P.dureeDetention  = g('f-dureeDetention', P.dureeDetention);
 }
 
-// Init
+// ══════════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════════
 (function init() {
   const credit = calcCredit();
   const sim = calcSimulation(credit.rows);
+  renderBanner();
   renderKPI(credit, sim);
   renderCout();
   renderLots();
+  renderChargesTable(sim);
+  renderIndicateurs(sim);
   renderChart(sim);
   renderSimulation(sim);
   renderAmort(credit);
